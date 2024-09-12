@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Usuário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastrar.css')}}">
+</head>
+<body>
+    <div id="container-cadastro">
+        <h1>Cadastrar Novo Usuário</h1>
+        {% set mensagens = get_flashed_messages() %}
+        {% if mensagens %}
+            <div id="alerta">
+                {{mensagens[0]}}
+            </div>
+        {% endif %}
+        <form action="/processar_cadastro" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" placeholder="Digite seu nome de usuário" required>
+            
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+            
+            <label for="confirmar_senha">Confirmar Senha:</label>
+            <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirme sua senha" required>
+            
+            <button type="submit" id="btn-cadastrar">Cadastrar</button>
+        </form>
+        <a href="/">Voltar para Login</a>
+    </div>
+</body>
+</html>

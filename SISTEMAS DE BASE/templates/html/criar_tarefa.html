@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Nova Atividade</title>
+</head>
+<body>
+    <h1>Criar Nova Atividade para {{ usuario.nome }}</h1>
+    <form method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao"></textarea><br>
+
+        <button type="submit">Criar Atividade</button>
+    </form>
+    <a href="{{ url_for('acesso', nome=usuario.nome) }}">Voltar</a>
+</body>
+</html>

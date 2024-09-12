@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Atividade</title>
+</head>
+<body>
+    <h1>Editar Atividade: {{ tarefa.titulo }}</h1>
+    <form method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ tarefa.titulo }}" required><br>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao">{{ tarefa.descricao }}</textarea><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="pendente" {% if tarefa.status == 'pendente' %}selected{% endif %}>Pendente</option>
+            <option value="concluída" {% if tarefa.status == 'concluída' %}selected{% endif %}>Concluída</option>
+        </select><br>
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
+    <a href="{{ url_for('acesso', nome=tarefa.usuario.nome) }}">Voltar</a>
+</body>
+</html>
