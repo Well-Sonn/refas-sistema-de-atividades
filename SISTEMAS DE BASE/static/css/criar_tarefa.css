@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #616161;
+    color: black;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 18px;
+    color: rgb(2, 35, 63);
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-align: left;
+}
+
+input[type="text"], textarea {
+    border-radius: 5px;
+    display: block;
+    width: calc(100% - 22px); 
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="text"]:focus, textarea:focus {
+    background-color: #e9e9e9;
+    color: black;
+}
+
+button {
+    border-radius: 5px;
+    color: #fff;
+    background-color: #08558b;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%; 
+}
+
+button:hover {
+    background-color: #066a9a;
+}
+
+a {
+    display: block;
+    color: #08558b;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+a:hover {
+    color: rgb(0, 89, 255);
+}

@@ -3,31 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/acesso.css')}}">
-<h1>Bem-vindo, {{ nomeUsuario }}</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/acesso.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="caixa-titulo">
+            Bem-vindo, {{ nomeUsuario }}
+        </div>
+        <div class="caixa-subtitulo">
+            SUAS ATIVIDADES
+        </div>
 
-<h2>Suas Atividades:</h2>
-{% if tarefas %}
-    <ul>
-        {% for tarefa in tarefas %}
-            <li>
-                <strong>{{ tarefa.titulo }}</strong>: {{ tarefa.descricao }} 
-                - Status: {{ tarefa.status }}
-                - Criado em: {{ tarefa.data_criacao.strftime('%d/%m/%Y') }}
-                {% if tarefa.data_conclusao %}
-                    - Concluído em: {{ tarefa.data_conclusao.strftime('%d/%m/%Y') }}
-                {% endif %}
-                <!-- Botões para Editar e Excluir -->
-                <a href="{{ url_for('editar_tarefa', tarefa_id=tarefa.id) }}">Editar</a>
-                <form action="{{ url_for('excluir_tarefa', tarefa_id=tarefa.id) }}" method="POST" style="display:inline;">
-                    <button type="submit">Excluir</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Você não tem atividades cadastradas.</p>
-{% endif %}
+        {% if tarefas %}
+            <ul>
+                {% for tarefa in tarefas %}
+                    <li>
+                        <strong>{{ tarefa.titulo }}</strong>
+                        <div class="descricao-caixa">
+                            {{ tarefa.descricao }}
+                        </div>
+                        <br>Status: {{ tarefa.status }}
+                        <br>Criado em: {{ tarefa.data_criacao.strftime('%d/%m/%Y') }}
+                        {% if tarefa.data_conclusao %}
+                            <br>Concluído em: {{ tarefa.data_conclusao.strftime('%d/%m/%Y') }}
+                        {% endif %}
 
-<!-- Botão para Criar Atividade -->
-<a href="{{ url_for('criar_tarefa', usuario_id=request.args.get('nome')) }}">Criar Nova Atividade</a>
+                        <div class="button-container">
+                            <a href="{{ url_for('editar_tarefa', tarefa_id=tarefa.id) }}">Editar</a>
+                            <form action="{{ url_for('excluir_tarefa', tarefa_id=tarefa.id) }}" method="POST">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="sem-atividades">Você não tem atividades cadastradas.</p>
+        {% endif %}
+
+        <a href="{{ url_for('criar_tarefa', usuario_id=request.args.get('nome')) }}" class="btn-criar">Criar Nova Atividade</a>
+        
+        <a href="{{ url_for('home') }}" class="btn-sair">Sair</a>
+    </div>
+</body>
+</html>

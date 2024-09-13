@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Criar Nova Atividade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/criar_tarefa.css') }}">
 </head>
 <body>
-    <h1>Criar Nova Atividade para {{ usuario.nome }}</h1>
-    <form method="POST">
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required><br>
-
-        <label for="descricao">Descrição:</label>
-        <textarea id="descricao" name="descricao"></textarea><br>
-
-        <button type="submit">Criar Atividade</button>
-    </form>
-    <a href="{{ url_for('acesso', nome=usuario.nome) }}">Voltar</a>
+    <div class="container">
+        <div class="card">
+            <h1>Criar Nova Atividade para {{ usuario.nome }}</h1>
+            <form method="POST">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+                
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao"></textarea>
+                
+                <button type="submit">Criar Atividade</button>
+            </form>
+            <a href="{{ url_for('acesso', nome=usuario.nome) }}" class="btn-voltar">Voltar</a>
+        </div>
+    </div>
 </body>
 </html>
